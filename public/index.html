@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&family=Roboto:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <script src="https://kit.fontawesome.com/e121c1b687.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -39,5 +47,63 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script type="text/javascript">
+    $( function(){
+        var tabButtons = new Swiper('.news-slider', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            mousewheelControl: true,
+            navigation: {
+                nextEl: '.s-next',
+                prevEl: '.s-prev',
+            },
+            breakpoints: {
+                300: {
+                    slidesPerView: 1
+                },
+                768: {
+                    slidesPerView: 1,
+                },
+                1024: {
+                    slidesPerView: 3,
+                }
+            }
+        }); 
+        tabButtons.on( "slideChange", function(){
+
+            let _index_button = tabButtons.activeIndex;
+            if( _index_button > 0  ){
+                $( ".s-prev" ).show();
+            }else{
+                $( ".s-prev" ).hide();
+            }
+
+        });
+
+        $( ".theme-switcher" ).on( "click", function(){
+            $( "body" ).toggleClass( "dark" );
+            if( $( "body" ).hasClass( "dark" ) ){
+                $( ".theme-switcher .text" ).html( "DARK" );
+            }else{
+                $( ".theme-switcher .text" ).html( "LIGHT" );
+            }
+        });
+
+        $( ".menu-bar" ).on( "click", function(){
+            $( ".sidebar" ).show();
+        });
+
+        $( ".search-text" ).on( "keyup", function(){
+            var _val = $( this ).val();
+            if( _val.length > 0 ){
+                $( ".click-icon" ).show();
+            }else{
+                $( ".click-icon" ).hide();
+            }
+        });
+
+     });
+</script>
   </body>
 </html>
