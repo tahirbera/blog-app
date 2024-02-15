@@ -42,12 +42,12 @@ export default function SideBar(){
       
                 href={`/eglence`}>Fun</a>
             </div>
-            <div className="theme-switcher">
+            {/* <div className="theme-switcher">
                 <span className="bar">
                     <span className = "ball"></span>
                 </span>
                 <span>LIGHT</span>
-            </div>
+            </div> */}
           </div>  
       </>
     )
